@@ -1,11 +1,13 @@
 package com.example.employeepayroll.model;
 
 import com.example.employeepayroll.dto.EmployeeDto;
+import lombok.Data;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 @Entity
+@Data
 public class EmpData {
     @Id
     @GeneratedValue
@@ -15,30 +17,6 @@ public class EmpData {
 
     public EmpData(){
 
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSalary() {
-        return salary;
-    }
-
-    public void setSalary(String salary) {
-        this.salary = salary;
     }
     public EmpData(Integer id, EmployeeDto employeeDto){
         this.id=id;
