@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/emp")
@@ -14,21 +15,8 @@ public class Empcontroller {
     @Autowired
     EmployeeService employeeService;
 
-    @GetMapping("/get/{id}")
-    public Employee employee(@PathVariable Integer id, @RequestParam String fname, String lname, String address, String salary, String pic, String note){
-        Employee emp=new Employee();
-        emp.setId(id);
-        emp.setFirstName(fname);
-        emp.setLastName(lname);
-        emp.setAddress(address);
-        emp.setSalary(salary);
-        emp.setProfilePic(pic);
-        emp.setNote(note);
-        return emp;
-    }
-    @PostMapping("/getdata")
-    public Employee getdata(@RequestBody Employee employee)
-    {
+    @PostMapping("/postdata")
+    public Employee input(@RequestBody Employee employee) {
         Employee empData = employeeService.postdata(employee);
         return empData;
     }
@@ -37,7 +25,16 @@ public class Empcontroller {
         return employeeService.getAllData();
     }
     @PutMapping("/edit/{id}")
-    public Employee editbyid(@PathVariable Integer id,@RequestParam String fname, String lname, String address, String salary, String pic, String note){
-        return employeeService.editdata(employee(id,fname,lname,address,salary,pic,note));
+    public Employee editbyid(@PathVariable Integer id,@RequestBody Employee employee){
+        return employeeService.updateDataById(id, employee);
+    }
+    @GetMapping("/getbyid{id}")
+    public Optional<Employee> getById(@PathVariable Integer id){
+        return employeeService.findById(id);
+    }
+    @DeleteMapping("/delete/{id}")
+    public String deletebyid(@PathVariable Integer id){
+        employeeService.deletedata(id);
+        return "Employee with id:"+id+" deleted";
     }
 }
