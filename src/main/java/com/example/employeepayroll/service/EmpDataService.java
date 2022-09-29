@@ -3,14 +3,14 @@ package com.example.employeepayroll.service;
 import com.example.employeepayroll.dto.EmployeeDto;
 import com.example.employeepayroll.model.EmpData;
 import com.example.employeepayroll.repository.EmpDataRepository;
-import com.example.employeepayroll.repository.IEmpService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class EmpDataService implements IEmpService {
+public class EmpDataService implements IEmpService{
     @Autowired
     EmpDataRepository empDataRepository;
 
