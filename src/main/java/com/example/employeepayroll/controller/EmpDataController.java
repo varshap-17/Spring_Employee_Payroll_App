@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -19,14 +20,14 @@ public class EmpDataController {
     EmpDataService empDataService;
 
     @PostMapping("/save")
-    public ResponseEntity<ResponseDto> save(@RequestBody EmployeeDto employeeDto){
+    public ResponseEntity<ResponseDto> save(@Valid @RequestBody EmployeeDto employeeDto){
         EmpData empData=null;
         empData=empDataService.save(employeeDto);
         ResponseDto responseDto=new ResponseDto("saved data successfully",empData);
         return new ResponseEntity<ResponseDto>(responseDto, HttpStatus.OK);
     }
     @PutMapping("/update/{id}")
-    public ResponseEntity<ResponseDto> update(@PathVariable Integer id,@RequestBody EmployeeDto employeeDto){
+    public ResponseEntity<ResponseDto> update(@Valid @PathVariable Integer id,@RequestBody EmployeeDto employeeDto){
         EmpData empData=empDataService.update(id, employeeDto);
         ResponseDto responseDto=new ResponseDto("updated data successfully",empData);
         return new ResponseEntity<ResponseDto>(responseDto,HttpStatus.OK);
