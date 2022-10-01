@@ -1,5 +1,6 @@
 package com.example.employeepayroll.model;
 
+import com.example.employeepayroll.dto.EmpDto;
 import lombok.Data;
 
 import javax.persistence.Entity;
@@ -20,28 +21,34 @@ public class Employee {
     private String profilePic;
     private String note;
     private Date StartDate;
+    private String gender;
+    private String department;
 
     public Employee(){
 
     }
-    public Employee(String firstName,String lastName,String address,String salary,String profilePic,String note,Date StartDate){
-        this.firstName=firstName;
-        this.lastName=lastName;
-        this.address=address;
-        this.salary=salary;
-        this.profilePic=profilePic;
-        this.note=note;
-        this.StartDate=StartDate;
+    public Employee(EmpDto empDto){
+        this.firstName=empDto.firstName;
+        this.lastName=empDto.lastName;
+        this.address=empDto.address;
+        this.salary=empDto.salary;
+        this.profilePic=empDto.profilePic;
+        this.note=empDto.note;
+        this.StartDate=empDto.StartDate;
+        this.gender=empDto.gender;
+        this.department=empDto.department;
     }
-    public Employee(Integer id,String firstName,String lastName,String address,String salary,String profilePic,String note,Date StartDate){
+    public Employee(Integer id,EmpDto empDto){
         super();
         this.id=id;
-        this.firstName=firstName;
-        this.lastName=lastName;
-        this.address=address;
-        this.salary=salary;
-        this.profilePic=profilePic;
-        this.note=note;
-        this.StartDate=StartDate;
+        this.firstName=empDto.firstName;
+        this.lastName=empDto.lastName;
+        this.address=empDto.address;
+        this.salary=empDto.salary;
+        this.profilePic=empDto.profilePic;
+        this.note=empDto.note;
+        this.StartDate=empDto.StartDate;
+        this.gender=empDto.gender;
+        this.department=empDto.department;
     }
 }
