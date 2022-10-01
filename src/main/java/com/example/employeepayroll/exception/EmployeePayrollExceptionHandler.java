@@ -21,4 +21,9 @@ public class EmployeePayrollExceptionHandler {
         ResponseDto responseDto=new ResponseDto("Exception while processing REST Request",errMesg);
         return new ResponseEntity<ResponseDto>(responseDto, HttpStatus.BAD_REQUEST);
     }
+    @ExceptionHandler(EmployeePayrollException.class)
+    public ResponseEntity<ResponseDto> handleEmployeeNotFound(EmployeePayrollException exception){
+        ResponseDto responseDto=new ResponseDto("Invalid id Input",exception);
+        return new ResponseEntity<ResponseDto>(responseDto,HttpStatus.BAD_REQUEST);
+    }
 }
