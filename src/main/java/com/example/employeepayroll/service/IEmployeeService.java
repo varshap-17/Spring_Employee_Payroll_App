@@ -13,4 +13,5 @@ public interface IEmployeeService {
     public Employee updateDataById(Integer id,EmpDto empDto);
     public Employee deletedata(Integer id);
     public List<Employee> getEmployeeByName(String firstName);
+    public List<Employee> getEmployeesByDepartment(String department);
 }
