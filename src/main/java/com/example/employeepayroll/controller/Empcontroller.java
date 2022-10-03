@@ -57,4 +57,10 @@ public class Empcontroller {
         ResponseDto responseDto=new ResponseDto("get employee details from name",employee);
         return new ResponseEntity<ResponseDto>(responseDto,HttpStatus.OK);
     }
+     @GetMapping("/department/{department}")
+     public ResponseEntity<ResponseDto> getempbydept(@PathVariable String department){
+        List<Employee> employee=employeeService.getEmployeesByDepartment(department);
+        ResponseDto responseDto=new ResponseDto("get employees from department",employee);
+        return new ResponseEntity<ResponseDto>(responseDto,HttpStatus.OK);
+    }
 }
